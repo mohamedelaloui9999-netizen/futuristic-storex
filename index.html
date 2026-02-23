@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 ALIEN-X | Mohamed Al-Aloui</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon: #00ff9d;
+            --plasma: #ff0055;
+            --cyber: #00f3ff;
+            --void: #020205;
+        }
+
+        /* 🔒 حماية ومنع السرقة */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            user-select: none; -webkit-user-drag: none;
+        }
+
+        body {
+            background-color: var(--void);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* 🌌 خلفية النجوم الفضائية */
+        .space-bg {
+            position: fixed; inset: 0; z-index: -1;
+            background: radial-gradient(circle at center, #0a0a2e 0%, #000 100%);
+        }
+        .stars {
+            position: absolute; width: 200%; height: 200%;
+            background: url("https://www.transparenttextures.com/patterns/stardust.png");
+            animation: moveStars 120s linear infinite; opacity: 0.3;
+        }
+        @keyframes moveStars { from { transform: translate(0,0); } to { transform: translate(-500px, -500px); } }
+
+        /* 👽 شاشة البداية (Alien Protocol) */
+        #alienOverlay {
+            position: fixed; inset: 0; background: black; z-index: 99999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            animation: fadeOut 3s forwards 3s;
+        }
+        #alienOverlay img { width: 150px; animation: alienFloat 2s infinite alternate; filter: drop-shadow(0 0 20px var(--neon)); }
+        @keyframes alienFloat { from { transform: translateY(0); } to { transform: translateY(-30px); } }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        /* 👤 معلومات المالك الجانبية */
+        .sidebar-dna {
+            position: fixed; left: 20px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 20px; z-index: 1000;
+        }
+        .dna-capsule {
+            background: rgba(0, 255, 157, 0.1); border: 1px solid var(--neon);
+            padding: 15px; border-radius: 50px; color: var(--neon);
+            text-decoration: none; transition: 0.4s; backdrop-filter: blur(10px);
+        }
+        .dna-capsule:hover { background: var(--neon); color: black; transform: scale(1.2) rotate(10deg); box-shadow: 0 0 20px var(--neon); }
+
+        /* 🚀 الهيدر */
+        header {
+            padding: 100px 20px; text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+        header h1 { font-size: 4rem; color: var(--cyber); text-shadow: 0 0 20px var(--cyber); letter-spacing: 5px; }
+        .morocco-badge { color: var(--plasma); font-weight: bold; font-size: 1.2rem; }
+
+        /* 🛠 قسم المهارات الهولوغرامية */
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; padding: 40px; max-width: 1000px; margin: auto;
+        }
+        .skill-hologram {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(0,255,157,0.2);
+            padding: 25px; border-radius: 15px; transition: 0.5s;
+        }
+        .skill-hologram:hover { border-color: var(--neon); transform: translateY(-10px); background: rgba(0,255,157,0.05); }
+        .progress-line { height: 6px; background: #222; border-radius: 10px; margin-top: 10px; overflow: hidden; }
+        .fill { height: 100%; background: var(--neon); box-shadow: 0 0 10px var(--neon); transition: 2s; width: 0; }
+
+        /* 🛒 متجر المنتجات (Firebase) */
+        .store-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; padding: 50px;
+        }
+        .product-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(0,243,255,0.1);
+            padding: 30px; border-radius: 20px; text-align: center; transition: 0.5s;
+        }
+        .product-card:hover { transform: scale(1.05); border-color: var(--cyber); box-shadow: 0 0 30px rgba(0,243,255,0.2); }
+        .order-btn {
+            width: 100%; padding: 15px; background: transparent; border: 1px solid var(--plasma);
+            color: var(--plasma); font-weight: bold; cursor: pointer; margin-top: 20px;
+        }
+        .order-btn:hover { background: var(--plasma); color: #fff; }
+
+        /* 🔴 تنبيه الحماية */
+        #securityAlert {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) scale(0);
+            background: red; color: white; padding: 15px 40px; border-radius: 50px;
+            z-index: 100000; transition: 0.3s; font-weight: bold;
+        }
+        #securityAlert.active { transform: translateX(-50%) scale(1); }
+
+    </style>
+</head>
+<body oncontextmenu="return triggerSecurity(event)">
+
+    <div id="securityAlert">🔴 بروتوكول الحماية نشط - النظام محمي يا متطفل! 👿</div>
+
+    <div id="alienOverlay">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Alien">
+        <h2 style="color:var(--neon); margin-top:20px; letter-spacing:10px;">MAA_SYSTEM_2090</h2>
+    </div>
+
+    <div class="space-bg"><div class="stars"></div></div>
+
+    <div class="sidebar-dna">
+        <a href="https://instagram.com/m.o.h.a.m.e.d.9.9.9.9" target="_blank" class="dna-capsule"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:Mohamedelaloui333@gmail.com" class="dna-capsule"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="dna-capsule" title="CV"><i class="fas fa-file-pdf"></i></a>
+    </div>
+
+    <header>
+        <div class="morocco-badge">HQ: MAGHREB 🇲🇦</div>
+        <h1>MOHAMED AL-ALOUI</h1>
+        <p>Web Developer | Cybersecurity | Alien Technology</p>
+    </header>
+
+    <section>
+        <h2 style="color:var(--neon); text-align:center; margin-bottom:30px;">🛠 المهارات التقنية</h2>
+        <div class="skills-grid">
+            <div class="skill-hologram">
+                <h3>HTML/CSS</h3>
+                <div class="progress-line"><div class="fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-hologram">
+                <h3>JAVASCRIPT</h3>
+                <div class="progress-line"><div class="fill" style="width: 75%;"></div></div>
+            </div>
+            <div class="skill-hologram">
+                <h3>PYTHON</h3>
+                <div class="progress-line"><div class="fill" style="width: 80%;"></div></div>
+            </div>
+            <div class="skill-hologram">
+                <h3>CYBER SECURITY</h3>
+                <div class="progress-line"><div class="fill" style="width: 65%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 style="color:var(--cyber); text-align:center; margin-top:50px;">🛒 ترسانة المنتجات</h2>
+        <div id="store-grid" class="store-grid">
+            </div>
+    </section>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        // 🔐 إعدادات Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAS7skn241U3yge8x30jre2c54f2c7ca3a6",
+            authDomain: "mohamed-future-store.firebaseapp.com",
+            projectId: "mohamed-future-store",
+            storageBucket: "mohamed-future-store.firebasestorage.app",
+            messagingSenderId: "14246138837",
+            appId: "1:14246138837:web:2c54f2c7ca3a6b6b6b6b6b"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 🛡️ وظيفة الحماية
+        function triggerSecurity(e) {
+            e.preventDefault();
+            const alert = document.getElementById('securityAlert');
+            alert.classList.add('active');
+            setTimeout(() => alert.classList.remove('active'), 3000);
+            return false;
+        }
+
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) {
+                triggerSecurity(e);
+                return false;
+            }
+        };
+
+        // 📡 جلب المنتجات
+        db.collection("منتجات").get().then((snapshot) => {
+            const grid = document.getElementById('store-grid');
+            snapshot.forEach((doc) => {
+                const d = doc.data();
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <img src="${d.صورة}" style="width:100%; height:150px; object-fit:contain;">
+                        <h3 style="color:var(--neon); margin:15px 0;">${d.اسم}</h3>
+                        <div style="font-size:1.8rem; color:var(--cyber);">${d.سعر} $</div>
+                        <button class="order-btn" onclick="window.location.href='mailto:Mohamedelaloui333@gmail.com?subject=طلب شراء: ${d.اسم}'">إرسال إشارة طلب 📡</button>
+                    </div>`;
+            });
+        });
+
+        // تحريك أشرطة المهارات عند الظهور
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.fill').forEach(bar => {
+                const pos = bar.getBoundingClientRect().top;
+                if(pos < window.innerHeight) bar.style.width = bar.parentElement.dataset.width || bar.style.width;
+            });
+        });
+    </script>
+</body>
+</html>
